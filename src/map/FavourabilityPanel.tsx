@@ -22,6 +22,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
+import ScoreCardModal from './ScoreCardPanel'
 
 interface ChartDataRow {
   Year: number
@@ -326,7 +327,15 @@ export default function FavourabilityPanel({ selectedSa1Ids, markerPosition, sa2
           Snapshot
         </Button>
 
-        {showScoreCard && <ScoreCardPanel onClose={() => setShowScoreCard(false)} />}
+        {showScoreCard && 
+          <ScoreCardPanel
+          open={showScoreCard}
+          onClose={() => setShowScoreCard(false)}
+          resultsScore={resultsScore}
+          mapImageUrl="/data/maps/Wollert_RDF_example.png"
+          chartData={chartData}
+          ageCohortData={[]}
+              />}
       </PanelCard>
 
       {/* Loading Overlay - Rendered conditionally outside PanelCard but inside motion.div wrapper */}
